@@ -8,12 +8,7 @@ const ship = (name, length) => {
     }
     return false;
   };
-  const isSunk = () => {
-    if (hitboxes.every(box => box === true)) {
-      return true;
-    }
-    return false;
-  };
+  const isSunk = () => hitboxes.every(box => box === true);
   return {
     name, length, hit, isSunk,
   };

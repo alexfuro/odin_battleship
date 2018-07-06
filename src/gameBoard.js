@@ -1,5 +1,6 @@
 const gameBoard = () => {
   const fleet = [];
+  const hits = [];
   const misses = [];
 
   const shipMatch = (coor) => {
@@ -45,6 +46,7 @@ const gameBoard = () => {
       const shipId = strike[0];
       const hitBox = strike[1];
       fleet[shipId].ship.hit(hitBox);
+      hits.push(coor);
     } else {
       misses.push(coor);
     }
@@ -52,7 +54,7 @@ const gameBoard = () => {
   };
   const sunkFleet = () => fleet.every(member => member.ship.isSunk() === true);
   return {
-    fleet, misses, place, receiveAttack, sunkFleet,
+    fleet, hits, misses, place, receiveAttack, sunkFleet,
   };
 };
 

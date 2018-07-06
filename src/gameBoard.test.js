@@ -51,7 +51,8 @@ test('can receive attack coordinates and attack a ship', () => {
   const newBoard = gameBoard();
   const testShip = ship('test 8', 3);
   newBoard.place([0, 0], testShip);
-  expect(newBoard.receiveAttack([1, 0])).toBeTruthy();
+  newBoard.receiveAttack([1, 0])
+  expect(newBoard.hits).toEqual([[1, 0]]);
 });
 test('can record missed attacks', () => {
   const newBoard = gameBoard();

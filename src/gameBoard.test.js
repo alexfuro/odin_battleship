@@ -1,6 +1,12 @@
 const gameBoard = require('./gameBoard');
 const ship = require('./ship');
 
+test('has a fleet', () => {
+  const newBoard = gameBoard();
+  const testShip = ship('test 1', 3);
+  expect(newBoard.fleet).toBeTruthy();
+});
+
 test('can place a ship given a set of coordinates', () => {
   const newBoard = gameBoard();
   const testShip = ship('test 1', 3);

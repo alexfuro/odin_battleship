@@ -52,7 +52,7 @@ const gameBoard = () => {
   };
   const sunkFleet = () => fleet.every(member => member.ship.isSunk() === true);
   return {
-    misses, place, receiveAttack, sunkFleet,
+    fleet, misses, place, receiveAttack, sunkFleet,
   };
 };
 

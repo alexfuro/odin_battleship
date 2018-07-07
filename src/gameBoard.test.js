@@ -73,6 +73,6 @@ test('can determine if a fleet has sunk', () => {
   newBoard.receiveAttack([1, 0]);
   newBoard.receiveAttack([2, 0]);
   newBoard.receiveAttack([0, 1]);
-  newBoard.receiveAttack([1, 1]);
+  newBoard.receiveAttack([0, 2]);
   expect(newBoard.sunkFleet()).toBeTruthy();
 });

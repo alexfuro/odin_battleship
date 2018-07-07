@@ -8,10 +8,10 @@ const gameBoard = () => {
     for (let index = 0; index < fleet.length; index += 1) {
       const member = fleet[index];
       for (let i = 0; i < member.ship.length; i += 1) {
-        if (member.rotate && coor[0] === member.pos.x
+        if (member.pos.rotate && coor[0] === member.pos.x
             && coor[1] === member.pos.y + i) {
           match = [index, i];
-        } else if (coor[0] === member.pos.x + i
+        } else if (!member.pos.rotate && coor[0] === member.pos.x + i
             && coor[1] === member.pos.y) {
           match = [index, i];
         }

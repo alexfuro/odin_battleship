@@ -13,6 +13,14 @@ test('can place a ship given a set of coordinates', () => {
   expect(newBoard.place([0, 0], testShip)).toBeTruthy();
 });
 
+test('can place a ship on board edge', () => {
+  const newBoard = gameBoard();
+  const testShip = ship('test 1', 3);
+  const testShip2 = ship('test 2', 5);
+  expect(newBoard.place([7, 3], testShip)).toBeTruthy();
+  expect(newBoard.place([0, 5], testShip2, true)).toBeTruthy();
+});
+
 test('cannot place a ship outside board with invalid coordinates', () => {
   const newBoard = gameBoard();
   const testShip = ship('test 2', 3);

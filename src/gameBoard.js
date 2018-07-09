@@ -23,8 +23,8 @@ const gameBoard = () => {
     if (coor[0] > 9 || coor[0] < 0 || coor[1] > 9 || coor[1] < 0) {
       return false;
     }
-    if ((!rotate && coor[0] + ship.length > 9)
-        || (rotate && coor[1] + ship.length > 9)) {
+    if ((!rotate && coor[0] + ship.length - 1 > 9)
+        || (rotate && coor[1] + ship.length - 1> 9)) {
       return false;
     }
     if (shipMatch(coor).length === 0) {

@@ -24,7 +24,11 @@ const gameBoard = () => {
       return false;
     }
     if ((!rotate && coor[0] + ship.length - 1 > 9)
+<<<<<<< HEAD
         || (rotate && coor[1] + ship.length - 1 > 9)) {
+=======
+        || (rotate && coor[1] + ship.length - 1> 9)) {
+>>>>>>> e4a23abd3133c3aae2e2343321f5c7e9155c3c36
       return false;
     }
     let shipCoor = [];

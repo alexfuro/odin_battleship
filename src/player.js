@@ -12,8 +12,8 @@ const player = (name) => {
     return coor;
   };
   const randomMove = () => {
-    const x = Math.floor(Math.random(10) * 10);
-    const y = Math.floor(Math.random(10) * 10);
+    const x = Math.floor(Math.random() * 10);
+    const y = Math.floor(Math.random() * 10);
     return attack([x, y]);
   };
   return { name, attack, randomMove };

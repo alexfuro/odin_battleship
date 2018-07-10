@@ -1,4 +1,14 @@
 const domControl = (() => {
+  const createLegend = (className) => {
+    const ulist = document.createElement('ul');
+    ulist.classList.add(className);
+    for (let i = 0; i < 10; i += 1) {
+      const elem = document.createElement('li');
+      elem.innerHTML = i;
+      ulist.appendChild(elem);
+    }
+    return ulist;
+  };
   const createGrid = (context) => {
     const grid = document.createElement('div');
     grid.classList.add(context);
@@ -7,6 +17,9 @@ const domControl = (() => {
       const square = document.createElement('div');
       square.classList.add('square');
       square.id = `${context}-${i}`;
+      if (context === 'shipSelect') {
+        square.innerHTML = i;
+      }
       grid.appendChild(square);
     }
     return grid;
@@ -46,6 +59,11 @@ const domControl = (() => {
     });
     return true;
   };
+  const showShipPlacer = () => {
+    const shipPlacement = document.getElementById('shipPlacement');
+    const grid = createGrid('shipSelect');
+    shipPlacement.appendChild(grid);
+  };
   const showWinner = (winner) => {
     const container = document.getElementById('container');
     const modal = document.createElement('div');
@@ -54,6 +72,7 @@ const domControl = (() => {
     modal.appendChild(msg);
     container.appendChild(modal);
   };
+  showShipPlacer();
   return {
     renderBoards, renderFleet, renderMoves, showWinner,
   };

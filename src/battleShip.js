@@ -63,8 +63,14 @@ const battleShip = () => {
     }
     return false;
   };
+  const play = () => {
+    initPlayerBoard();
+    initCompBoard();
+    domControl.renderBoards(players);
+    domControl.renderFleet(players[0].name, gameBoards[0].fleet);
+  };
   return {
-    players, gameBoards, initPlayerBoard, initCompBoard, gameOver, winner,
+    players, gameBoards, initPlayerBoard, initCompBoard, gameOver, winner, play
   };
 };
 

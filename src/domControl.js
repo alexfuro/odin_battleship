@@ -46,7 +46,17 @@ const domControl = (() => {
     });
     return true;
   };
-  return { renderBoards, renderFleet, renderMoves };
+  const showWinner = (winner) => {
+    const container = document.getElementById('container');
+    const modal = document.createElement('div');
+    const msg = document.createElement('p');
+    msg.innerHTML = `${winner} won!`;
+    modal.appendChild(msg);
+    container.appendChild(modal);
+  };
+  return {
+    renderBoards, renderFleet, renderMoves, showWinner,
+  };
 })();
 
 module.exports = domControl;

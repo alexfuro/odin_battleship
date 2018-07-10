@@ -74,7 +74,7 @@ const battleShip = () => {
     enemyBoard.onclick = (event) => {
       const playerAttack = getPlayerAttack(event);
       const validAttack = players[0].attack(playerAttack);
-      if (validAttack) {
+      if (validAttack && !gameOver()) {
         gameBoards[1].receiveAttack(validAttack);
         domControl.renderMoves(players[1].name, gameBoards[1]);
         let compMove;
@@ -83,6 +83,10 @@ const battleShip = () => {
         } while (!compMove);
         gameBoards[0].receiveAttack(compMove);
         domControl.renderMoves(players[0].name, gameBoards[0]);
+        if (gameOver()) {
+          const winnerName = winner();
+          domControl.showWinner(winnerName);
+        }
       }
       return true;
     };

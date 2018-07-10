@@ -1,6 +1,11 @@
 const ship = require('./ship');
+const gameBoard = require('./gameBoard');
+const player = require('./player');
+const domControl = require('./domControl');
 
-const battleShip = (players, gameBoards) => {
+const battleShip = () => {
+  const players = [player('playerOne'), player('playerTwo')];
+  const gameBoards = [gameBoard(), gameBoard()];
   const makeFleet = () => {
     const destroyer = ship('destroyer', 2);
     const sub = ship('submarine', 3);

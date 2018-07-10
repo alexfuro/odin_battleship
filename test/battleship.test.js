@@ -2,21 +2,17 @@ const battleShip = require('.././src/battleShip');
 const gameBoard = require('.././src/gameBoard');
 
 test('has two players', () => {
-  const game = battleShip(['player', 'computer']);
+  const game = battleShip();
   expect(game.players.length).toEqual(2);
 });
 
 test('has two boards', () => {
-  const players = ['player', 'computer'];
-  const gameBoards = ['board 1', 'board 2'];
-  const game = battleShip(players, gameBoards);
+  const game = battleShip();
   expect(game.gameBoards.length).toEqual(2);
 });
 
 test('places player fleet', () => {
-  const players = ['player', 'computer'];
-  const gameBoards = [gameBoard(), gameBoard()];
-  const game = battleShip(players, gameBoards);
+  const game = battleShip();
   game.initPlayerBoard();
   expect(game.gameBoards[0].fleet[0].pos).toEqual({ x: 0, y: 0, rotate: false });
   expect(game.gameBoards[0].fleet[1].pos).toEqual({ x: 6, y: 0, rotate: false });
@@ -26,9 +22,7 @@ test('places player fleet', () => {
 });
 
 test('places player fleet with custom coordinates', () => {
-  const players = ['player', 'computer'];
-  const gameBoards = [gameBoard(), gameBoard()];
-  const game = battleShip(players, gameBoards);
+  const game = battleShip();
   const fleetPos = [
     { coor: [9, 0], rotate: true },
     { coor: [7, 3], rotate: false },
@@ -45,26 +39,20 @@ test('places player fleet with custom coordinates', () => {
 });
 
 test(('places comp fleet'), () => {
-  const players = ['player', 'computer'];
-  const gameBoards = [gameBoard(), gameBoard()];
-  const game = battleShip(players, gameBoards);
+  const game = battleShip();
   game.initCompBoard();
   expect(game.gameBoards[1].fleet.length).toEqual(5);
 });
 
 test('can tell if a game is ongoing', () => {
-  const players = ['player', 'computer'];
-  const gameBoards = [gameBoard(), gameBoard()];
-  const game = battleShip(players, gameBoards);
+  const game = battleShip();
   game.initPlayerBoard();
   game.initCompBoard();
   expect(game.gameOver()).toBeFalsy();
 });
 
 test('determine a winner', () => {
-  const players = [{ name: 'player' }, { name: 'computer' }];
-  const gameBoards = [gameBoard(), gameBoard()];
-  const game = battleShip(players, gameBoards);
+  const game = battleShip();
   game.initPlayerBoard();
   game.initCompBoard();
   game.gameBoards[0].receiveAttack([0, 0]);
@@ -85,5 +73,5 @@ test('determine a winner', () => {
   game.gameBoards[0].receiveAttack([4, 6]);
   game.gameBoards[0].receiveAttack([4, 7]);
   expect(game.gameOver()).toBeTruthy();
-  expect(game.winner()).toBe('computer');
+  expect(game.winner()).toBe('playerTwo');
 });

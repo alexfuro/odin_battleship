@@ -4,14 +4,14 @@ const gameBoard = () => {
   const misses = [];
 
   const shipMatch = (coor) => {
-    let match = [];
     for (let index = 0; index < fleet.length; index += 1) {
       const member = fleet[index];
       for (let i = 0; i < member.ship.length; i += 1) {
         if (member.pos.rotate && coor[0] === member.pos.x
             && coor[1] === member.pos.y + i) {
           return [index, i];
-        } else if (!member.pos.rotate && coor[0] === member.pos.x + i
+        }
+        if (!member.pos.rotate && coor[0] === member.pos.x + i
             && coor[1] === member.pos.y) {
           return [index, i];
         }
@@ -27,18 +27,18 @@ const gameBoard = () => {
         || (rotate && coor[1] + ship.length - 1 > 9)) {
       return false;
     }
-    let shipCoor = [];
-    let collisions = [];
-    for(let i = 0; i < ship.length; i+=1) {
+    const shipCoor = [];
+    const collisions = [];
+    for (let i = 0; i < ship.length; i += 1) {
       if (rotate) {
-        shipCoor.push([coor[0], coor[1] + i]); 
+        shipCoor.push([coor[0], coor[1] + i]);
       } else {
-        shipCoor.push([coor[0] + i, coor[1]]);     
+        shipCoor.push([coor[0] + i, coor[1]]);
       }
-      collisions.push(shipMatch(shipCoor[i]));   
+      collisions.push(shipMatch(shipCoor[i]));
     }
-    const noCollision = collisions.every((match) =>  match === false);
-    if (noCollision) {
+    const noCollisions = collisions.every(match => match === false);
+    if (noCollisions) {
       const newFleetMem = {};
       newFleetMem.pos = {
         x: coor[0],
@@ -55,7 +55,7 @@ const gameBoard = () => {
     const strike = shipMatch(coor);
     if (strike === false) {
       misses.push(coor);
-    } else {      
+    } else {
       const shipId = strike[0];
       const hitBox = strike[1];
       fleet[shipId].ship.hit(hitBox);

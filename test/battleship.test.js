@@ -1,5 +1,5 @@
-const battleShip = require('./battleShip');
-const gameBoard = require('./gameBoard');
+const battleShip = require('.././src/battleShip');
+const gameBoard = require('.././src/gameBoard');
 
 test('has two players', () => {
   const game = battleShip(['player', 'computer']);

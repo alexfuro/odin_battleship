@@ -1,5 +1,5 @@
-const gameBoard = require('./gameBoard');
-const ship = require('./ship');
+const gameBoard = require('../src/gameBoard');
+const ship = require('../src/ship');
 
 test('has a fleet', () => {
   const newBoard = gameBoard();

@@ -1,4 +1,4 @@
-const player = require('./player');
+const player = require('../src/player');
 
 test('players can have a name', () => {
   const player1 = player('player 1');

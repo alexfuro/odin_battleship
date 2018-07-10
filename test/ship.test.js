@@ -1,4 +1,4 @@
-const ship = require('./ship');
+const ship = require('../src/ship');
 
 test('creates ship objects with name and length', () => {
   const testShip = ship('test ship 1', 4);

@@ -64,6 +64,23 @@ const domControl = (() => {
     const grid = createGrid('shipSelect');
     shipPlacement.appendChild(grid);
   };
+  const hideSetup = () => {
+    const shipPlacement = document.getElementById('shipPlacement');
+    shipPlacement.classList.add('hide');
+  };
+  const getShipPlacements = () => {
+    const shipsPos = document.querySelectorAll('.shipInput');
+    const rotations = document.querySelectorAll('.shipRotate');
+    const placements = [];
+    for (let i = 0; i < shipsPos.length; i += 1) {
+      const x = Math.floor(shipsPos[i].value / 10);
+      const y = Math.floor(shipsPos[i].value % 10);
+      const rotated =  rotations[i].checked
+      const shipPlace = { coor: [x, y],  rotate: rotated };
+      placements.push(shipPlace);
+    }
+    return placements;
+  };
   const showWinner = (winner) => {
     const container = document.getElementById('container');
     const modal = document.createElement('div');
@@ -72,9 +89,14 @@ const domControl = (() => {
     modal.appendChild(msg);
     container.appendChild(modal);
   };
-  showShipPlacer();
   return {
-    renderBoards, renderFleet, renderMoves, showWinner,
+    renderBoards,
+    renderFleet,
+    renderMoves,
+    showWinner,
+    showShipPlacer,
+    getShipPlacements,
+    hideSetup,
   };
 })();
 

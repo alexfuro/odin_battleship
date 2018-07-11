@@ -92,11 +92,19 @@ const battleShip = () => {
     };
   };
   const play = () => {
-    initPlayerBoard();
-    initCompBoard();
-    domControl.renderBoards(players);
-    domControl.renderFleet(players[0].name, gameBoards[0].fleet);
-    attackListener();
+    const placeShipBtn = document.getElementById('placeShipsBtn');
+    let customPos;
+    domControl.showShipPlacer();
+    placeShipBtn.onclick = (event) => {
+      event.preventDefault();
+      customPos = domControl.getShipPlacements()
+      domControl.hideSetup();
+      initPlayerBoard(customPos);
+      initCompBoard();
+      domControl.renderBoards(players);
+      domControl.renderFleet(players[0].name, gameBoards[0].fleet);
+      attackListener();
+    };
   };
   return {
     players, gameBoards, initPlayerBoard, initCompBoard, gameOver, winner, play

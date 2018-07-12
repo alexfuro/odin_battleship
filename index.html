@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div id="container">
+      <div id="shipPlacement">
+        <form id="shipForm">
+          <legend>Place all ships based on their bow (front)</legend>
+          <fieldset>
+            <legend>Destroyer (length: 2)</legend>
+            <label>Square Number</label>
+            <input type="number" min="0" max="99" class="shipInput"></input><br>
+            <label>Rotate sideways (the bow will be on the left)</label>
+            <input type="checkbox" class="shipRotate"></input>
+          </fieldset>
+          <fieldset>
+            <legend>Submarine (length: 3)</legend>
+            <label>Square Number</label>
+            <input type="number" min="0" max="99" class="shipInput"></input><br>
+            <label>Rotate sideways (the bow will be on the left)</label>
+            <input type="checkbox" class="shipRotate"></input>
+          </fieldset>
+          <fieldset>
+            <legend>Cruiser (length: 3)</legend>
+            <label>Square Number</label>
+            <input type="number" min="0" max="99" class="shipInput"></input><br>
+            <label>Rotate sideways (the bow will be on the left)</label>
+            <input type="checkbox" class="shipRotate"></input>
+          </fieldset>
+          <fieldset>
+            <legend>Battleship (length: 4)</legend>
+            <label>Square Number</label>
+            <input type="number" min="0" max="99" class="shipInput"></input><br>
+            <label>Rotate sideways (the bow will be on the left)</label>
+            <input type="checkbox" class="shipRotate"></input>
+          </fieldset>
+          <fieldset>
+            <legend>Carrier (length: 5)</legend>
+            <label>Square Number</label>
+            <input type="number" min="0" max="99" class="shipInput"></input><br>
+            <label>Rotate sideways (the bow will be on the left)</label>
+            <input type="checkbox" class="shipRotate"></input>
+          </fieldset>
+          <button id="placeShipsBtn">Place</button>
+        </form>
+      </div>
+    </div>
+    <script src="bundle.js"></script>
+  </body>
+</html>

@@ -89,6 +89,16 @@ const domControl = (() => {
     modal.appendChild(msg);
     container.appendChild(modal);
   };
+  const showShipError = () => {
+    const shipPlacement = document.getElementById('shipPlacement');
+    const prevMsg = document.getElementById('invalidPlacement');
+    if (prevMsg === null) {
+      const errorMsg = document.createElement('p');
+      errorMsg.id = 'invalidPlacement';
+      errorMsg.innerHTML = 'Error those ship coordinates are valid. Try again.';
+      shipPlacement.appendChild(errorMsg);
+    }
+  };
   return {
     renderBoards,
     renderFleet,
@@ -97,6 +107,7 @@ const domControl = (() => {
     showShipPlacer,
     getShipPlacements,
     hideSetup,
+    showShipError,
   };
 })();
 

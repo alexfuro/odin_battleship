@@ -25,8 +25,17 @@ const battleShip = () => {
       fleetPos.push({ coor: [4, 3], rotate: true });
     }
     for (let i = 0; i < fleet.length; i += 1) {
-      gameBoards[0].place(fleetPos[i].coor, fleet[i], fleetPos[i].rotate);
+      const success = gameBoards[0].place(fleetPos[i].coor,
+        fleet[i], fleetPos[i].rotate);
+      if (!success) {
+        // reset fleet
+        for (let j = 0; j < fleet.length; j += 1) {
+          gameBoards[0].fleet.pop();
+        }
+        return false;
+      }
     }
+    return true;
   };
   const randomPlacement = () => {
     const x = Math.floor(Math.random() * 10);
@@ -93,17 +102,20 @@ const battleShip = () => {
   };
   const play = () => {
     const placeShipBtn = document.getElementById('placeShipsBtn');
-    let customPos;
     domControl.showShipPlacer();
     placeShipBtn.onclick = (event) => {
       event.preventDefault();
-      customPos = domControl.getShipPlacements()
-      domControl.hideSetup();
-      initPlayerBoard(customPos);
-      initCompBoard();
-      domControl.renderBoards(players);
-      domControl.renderFleet(players[0].name, gameBoards[0].fleet);
-      attackListener();
+      const customPos = domControl.getShipPlacements()
+      const success = initPlayerBoard(customPos);
+      if (success) {
+        domControl.hideSetup();
+        initCompBoard();
+        domControl.renderBoards(players);
+        domControl.renderFleet(players[0].name, gameBoards[0].fleet);
+        attackListener();
+      } else {
+        domControl.showShipError();
+      }
     };
   };
   return {

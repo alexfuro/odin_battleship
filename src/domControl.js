@@ -85,8 +85,16 @@ const domControl = (() => {
     const container = document.getElementById('container');
     const modal = document.createElement('div');
     const msg = document.createElement('p');
+    const rematchForm = document.createElement('form');
+    const rematchBtn = document.createElement('input');
+    modal.classList.add('winner');
     msg.innerHTML = `${winner} won!`;
+    rematchBtn.type = "submit";
+    rematchBtn.id = "rematchBtn";
+    rematchBtn.value = "Rematch";
     modal.appendChild(msg);
+    rematchForm.appendChild(rematchBtn)
+    modal.appendChild(rematchForm);
     container.appendChild(modal);
   };
   const showShipError = () => {

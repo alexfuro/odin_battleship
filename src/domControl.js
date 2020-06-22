@@ -103,7 +103,7 @@ const domControl = (() => {
     if (prevMsg === null) {
       const errorMsg = document.createElement('p');
       errorMsg.id = 'invalidPlacement';
-      errorMsg.innerHTML = 'Error those ship coordinates are valid. Try again.';
+      errorMsg.innerHTML = 'Error: Those ship coordinates are not valid. Try again.';
       shipPlacement.appendChild(errorMsg);
     }
   };
